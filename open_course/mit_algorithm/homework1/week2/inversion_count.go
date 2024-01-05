@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"slices"
+
+	"golang.org/x/exp/slices"
 
 	"github.com/miniyk2012/awesomego/open_course/mit_algorithm/homework1/tools"
 )

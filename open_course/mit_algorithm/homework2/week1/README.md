@@ -13,7 +13,8 @@ then your answer should be "400,300,100,0,0" (without the quotes).  (Note also t
 
 WARNING: This is the most challenging programming assignment of the course. Because of the size of the graph you may have to manage memory carefully.
 The best way to do this depends on your programming language and environment, and we strongly suggest that you exchange tips for doing this on the discussion forums.
-      
+
+注意: 给出的数据是无向图(有a->b的边, 则一定有b->a的相同长度的边), dijkstra算法对无向图是适用的.
 ## 资料
 1. python的代码架构: https://drive.google.com/open?id=1oyFlv810Ekc1QteXqDgb83vTkJEhAtnR
 2. 大量的测试用例: https://github.com/beaunus/stanford-algs/blob/master/testCases/course2/assignment1SCC/input_mostlyCycles_68_320000.txt

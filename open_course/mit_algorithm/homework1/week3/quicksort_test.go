@@ -1,9 +1,10 @@
 package main
 
 import (
-	"slices"
 	"sort"
 	"testing"
+
+	"golang.org/x/exp/slices"
 
 	"github.com/miniyk2012/awesomego/open_course/mit_algorithm/homework1/tools"
 	"github.com/stretchr/testify/assert"

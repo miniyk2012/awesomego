@@ -1,9 +1,10 @@
 package week1
 
 import (
-	"slices"
 	"strconv"
 	"strings"
+
+	"golang.org/x/exp/slices"
 )
 
 type karatsuba struct{}
@@ -47,6 +48,13 @@ func shortMul(x, y []byte) []byte {
 	x1, _ := strconv.ParseInt(string(x), 10, 64)
 	y1, _ := strconv.ParseInt(string(y), 10, 64)
 	return []byte(strconv.FormatInt(x1*y1, 10))
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
 
 func add(x, y []byte) []byte {

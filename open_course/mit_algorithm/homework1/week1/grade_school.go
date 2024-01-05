@@ -1,7 +1,7 @@
 package week1
 
 import (
-	"slices"
+	"golang.org/x/exp/slices"
 )
 
 type gradeSchool struct{}
