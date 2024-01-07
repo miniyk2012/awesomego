@@ -1,6 +1,7 @@
 package week1
 
 import (
+	"github.com/miniyk2012/awesomego/utils/go_utils"
 	"golang.org/x/exp/slices"
 )
 
@@ -58,7 +59,7 @@ func addLine(total, newLine []uint8, shift int) (r []uint8) {
 	total = slices.Clone(total)
 	newLine = slices.Clone(newLine)
 	paddingZero := append(newLine, make([]uint8, shift)...)
-	maxLength := max(len(total), len(paddingZero))
+	maxLength := go_utils.Max(len(total), len(paddingZero))
 	r = make([]uint8, maxLength)
 	var inc uint8
 	slices.Reverse(total)

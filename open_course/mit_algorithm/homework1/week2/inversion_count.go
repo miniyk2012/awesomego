@@ -72,6 +72,6 @@ func main() {
 	fmt.Printf("inversionCount=%d\n", num)
 	fmt.Printf("is sorted? %t\n", slices.IsSorted(arr))
 	fmt.Println(arr[:10])
-	fmt.Println(arr[len(arr)-10 : len(arr)])
+	fmt.Println(arr[len(arr)-10:])
 	fmt.Printf("slow method=%d", SlowInversionCount(copyArr))
 }
