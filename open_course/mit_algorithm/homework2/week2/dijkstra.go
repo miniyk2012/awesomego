@@ -320,12 +320,20 @@ func (hsp *HeapBasedDijkstra) findNewW() {
 	for it.HasNext() {
 		edge := it.Next()
 		if _, ok := hsp.X[edge.to]; !ok {
-			eleV := heap.Remove(hsp.h, hsp.h.Index(edge.to)).(Elem)
+			eleV := hsp.h.s[hsp.h.Index(edge.to)]
 			if eleV.score > hsp.A[eleW.w]+edge.weight {
+				// 当距离变小时才修改堆, 用heap.Fix速度会略微快一些
 				eleV.score = hsp.A[eleW.w] + edge.weight
 				eleV.edge = &edge
+				hsp.h.s[hsp.h.Index(edge.to)] = eleV
+				heap.Fix(hsp.h, hsp.h.Index(edge.to))
 			}
-			heap.Push(hsp.h, eleV)
+			//eleV := heap.Remove(hsp.h, hsp.h.Index(edge.to)).(Elem)
+			//if eleV.score > hsp.A[eleW.w]+edge.weight {
+			//	eleV.score = hsp.A[eleW.w] + edge.weight
+			//	eleV.edge = &edge
+			//}
+			//heap.Push(hsp.h, eleV)
 		}
 	}
 }
