@@ -14,8 +14,15 @@ func TestLoadGraph(t *testing.T) {
 	for it.HasNext() {
 		t.Log(it.Next())
 	}
-
+	t.Log()
 	filePath = "./testdata/testcase1.txt"
 	graph = LoadGraph(filePath)
 	assert.True(t, graph.IsSymmetry())
+	allEdges := graph.Edges()
+	var totalEdges int
+	for allEdges.HasNext() {
+		totalEdges++
+		t.Log(allEdges.Next())
+	}
+	assert.Equal(t, 16, totalEdges)
 }
