@@ -1,4 +1,4 @@
-package main
+package week1
 
 import (
 	"bufio"
@@ -48,8 +48,8 @@ func buildGraph(filePath string) *DirectGraph {
 	if err != nil {
 		return nil
 	}
-	var maxNode = 0
 	defer f.Close()
+	var maxNode = 0
 	sc := bufio.NewScanner(f)
 
 	for sc.Scan() {
@@ -67,7 +67,7 @@ func buildGraph(filePath string) *DirectGraph {
 			maxNode = node2
 		}
 	}
-	if err := sc.Err(); err != nil {
+	if err = sc.Err(); err != nil {
 		log.Printf("scan file error: %v", err)
 		return nil
 	}
