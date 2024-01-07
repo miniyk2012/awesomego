@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/miniyk2012/awesomego/utils/go_utils"
 	"golang.org/x/exp/slices"
 )
 
@@ -50,15 +51,8 @@ func shortMul(x, y []byte) []byte {
 	return []byte(strconv.FormatInt(x1*y1, 10))
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
 func add(x, y []byte) []byte {
-	maxLength := max(len(x), len(y))
+	maxLength := go_utils.Max(len(x), len(y))
 	x, y = slices.Clone(x), slices.Clone(y)
 	slices.Reverse(x)
 	slices.Reverse(y)
@@ -139,7 +133,7 @@ func paddingZeros(c []byte, n int) (d []byte) {
 
 // a,b的左边补'0'到2^k, 方便对半分割
 func paddingTwoPower(a, b []byte) (x, y []byte) {
-	var size = max(len(a), len(b))
+	var size = go_utils.Max(len(a), len(b))
 	finalSize := 1
 	for finalSize < size {
 		finalSize *= 2

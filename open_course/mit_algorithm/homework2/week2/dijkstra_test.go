@@ -59,7 +59,37 @@ func TestNaiveSP(t *testing.T) {
 				for it.HasNext() {
 					edge := it.Next()
 					sb.WriteString(fmt.Sprintf("%s, ", edge))
-					path = append(path, edge.w+1)
+					path = append(path, edge.to+1)
+				}
+				line := sb.String()
+				sb.Reset()
+				if len(line) >= 2 {
+					sb.WriteString(line[:len(line)-2])
+					sb.WriteString(": ")
+				}
+				sb.WriteString(fmt.Sprintf("1 to %d distance=%d", i+1, sp.Shortest(i)))
+				t.Log(sb.String())
+				assert.Equal(t, testcase.dist[i], sp.Shortest(i))
+				assert.Equal(t, testcase.paths[i], path)
+			}
+		})
+	}
+}
+
+func TestHeapSP(t *testing.T) {
+	for _, testcase := range testcases {
+		t.Run(testcase.testcaseFile, func(t *testing.T) {
+			graph := LoadGraph(filepath.Join("./testdata", testcase.testcaseFile))
+			sp := InitHeapBasedDijkstra(graph, 1)
+			sp.Run()
+			for i := 0; i < graph.V; i++ {
+				var sb strings.Builder
+				var path []int
+				it := NewEdgeIterator(sp.B[i])
+				for it.HasNext() {
+					edge := it.Next()
+					sb.WriteString(fmt.Sprintf("%s, ", edge))
+					path = append(path, edge.to+1)
 				}
 				line := sb.String()
 				sb.Reset()
@@ -91,4 +121,32 @@ func TestAssignment(t *testing.T) {
 		}
 	}
 	assert.Equal(t, "2599,2610,2947,2052,2367,2399,2029,2442,2505,3068", sb.String())
+
+	hsp := InitHeapBasedDijkstra(graph, 1)
+	sb.Reset()
+	hsp.Run()
+	for i, id := range nodes {
+		v := hsp.Shortest(id - 1)
+		sb.WriteString(strconv.Itoa(v))
+		if i < len(nodes)-1 {
+			sb.WriteString(",")
+		}
+	}
+	assert.Equal(t, "2599,2610,2947,2052,2367,2399,2029,2442,2505,3068", sb.String())
+}
+
+func BenchmarkNaiveDijkstra_Run(b *testing.B) {
+	graph := LoadGraph("./dijkstraData.txt")
+	for i := 0; i < b.N; i++ {
+		sp := InitNaiveDijkstra(graph, 1)
+		sp.Run()
+	}
+}
+
+func BenchmarkHeapBasedDijkstra_Run(b *testing.B) {
+	graph := LoadGraph("./dijkstraData.txt")
+	for i := 0; i < b.N; i++ {
+		sp := InitHeapBasedDijkstra(graph, 1)
+		sp.Run()
+	}
 }
