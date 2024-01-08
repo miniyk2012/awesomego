@@ -106,6 +106,34 @@ func TestHeapSP(t *testing.T) {
 	}
 }
 
+var testCases = []struct {
+	testcaseFile string
+	dist         string
+}{
+	{"input_random_15_32.txt", "5194,9990,8494,8548,14509,14421,8601,10812,9890,6589"},
+	{"input_random_28_256.txt", "561210,512598,559247,660768,485338,534807,364902,307456,511454,453935"},
+}
+
+func TestHeapSPUnitCase(t *testing.T) {
+	var nodes = []int{7, 37, 59, 82, 99, 115, 133, 165, 188, 197}
+	for _, testcase := range testCases {
+		t.Run(testcase.testcaseFile, func(t *testing.T) {
+			graph := LoadGraph(filepath.Join("./testdata", testcase.testcaseFile))
+			sp := InitHeapBasedDijkstra(graph, 1)
+			sp.Run()
+			var sb strings.Builder
+			for i, id := range nodes {
+				v := sp.Shortest(id - 1)
+				sb.WriteString(strconv.Itoa(v))
+				if i < len(nodes)-1 {
+					sb.WriteString(",")
+				}
+			}
+			assert.Equal(t, testcase.dist, sb.String())
+		})
+	}
+}
+
 func TestAssignment(t *testing.T) {
 	var nodes = []int{7, 37, 59, 82, 99, 115, 133, 165, 188, 197}
 	graph := LoadGraph("./dijkstraData.txt")
