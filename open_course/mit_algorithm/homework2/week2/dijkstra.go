@@ -229,6 +229,7 @@ type Elem struct {
 	edge  *WeightedDiEdge // 贪心边, 如果不存在则为nil
 }
 
+// Heap 实现参考: https://www.cnblogs.com/huxianglin/p/6925119.html
 type Heap struct {
 	s   []Elem
 	idx map[int]int // key是节点, value是在heap中的下标
@@ -280,15 +281,30 @@ func InitHeapBasedDijkstra(graph *WeightedDiGraph, s int) *HeapBasedDijkstra {
 	for i := range b {
 		b[i] = list.New()
 	}
-	hs := make([]Elem, 0, graph.V-1)
+	// 初始化Heap
+	// 法1
+	//hs := make([]Elem, 0, graph.V)
+	//h := &Heap{s: hs, idx: make(map[int]int)}
+	//for i := 0; i < graph.V; i++ {
+	//	if i == s-1 {
+	//		heap.Push(h, Elem{w: i, score: 0})
+	//	} else {
+	//		heap.Push(h, Elem{w: i, score: InitDistance})
+	//	}
+	//}
+
+	// 法2
+	hs := make([]Elem, graph.V)
 	h := &Heap{s: hs, idx: make(map[int]int)}
 	for i := 0; i < graph.V; i++ {
 		if i == s-1 {
-			heap.Push(h, Elem{w: i, score: 0})
+			h.s[i] = Elem{w: i, score: 0}
 		} else {
-			heap.Push(h, Elem{w: i, score: InitDistance})
+			h.s[i] = Elem{w: i, score: InitDistance}
 		}
+		h.idx[i] = i // 用heap.Init(h)的话, 记得要把idx也做初始化, 否则就不对
 	}
+	heap.Init(h)
 	return &HeapBasedDijkstra{
 		graph:  graph,
 		source: s - 1,
