@@ -22,7 +22,7 @@ func (s *ServiceA) Add(args *Args, reply *int) error {
 func main() {
 	service := new(ServiceA)
 	rpc.Register(service) // 注册RPC服务
-	l, e := net.Listen("tcp", ":9091")
+	l, e := net.Listen("sticky_tcp", ":9091")
 	if e != nil {
 		log.Fatal("listen error:", e)
 	}
