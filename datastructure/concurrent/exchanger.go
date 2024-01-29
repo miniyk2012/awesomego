@@ -1,3 +1,6 @@
+// 参考了鸟窝的库: https://github.com/smallnest/exp/blob/master/sync
+// 鸟窝的分享: https://talkgo.org/t/topic/5365
+
 package concurrent
 
 import (
