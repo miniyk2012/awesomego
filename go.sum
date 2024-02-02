@@ -4,6 +4,8 @@ github.com/emirpasic/gods v1.18.1 h1:FXtiHYKDGKCW2KzwZKx0iC0PQmdlorYgdFG9jPXJ1Bc
 github.com/emirpasic/gods v1.18.1/go.mod h1:8tpGGwCnJ5H4r6BWwaV6OrWmMoPhUl5jm/FMNAnJvWQ=
 github.com/marusama/cyclicbarrier v1.1.0 h1:ol/AG+sjvh5yz832avbNjaowoerBuD3AgozxL+aD9u0=
 github.com/marusama/cyclicbarrier v1.1.0/go.mod h1:5u93l83cy51YXdz6eKq6kO9+9mGAooB6DHMAxcSuWwQ=
+github.com/ofabry/go-callvis v0.7.0 h1:kh8TYgER49uZDlMrYviHchBs+I4n/SgiZXv45CVkqiE=
+github.com/ofabry/go-callvis v0.7.0/go.mod h1:z/1SpfLX72BjG8mgjy77/VWK5xJ9YBytCBnQeQnRObQ=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/smallnest/goroutine v1.1.1 h1:nSPBDeFNUjgukcT2Ue10G9sKQiQl8xLOMtgV92HjgCQ=

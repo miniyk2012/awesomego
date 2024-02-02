@@ -23,7 +23,7 @@ func (t *GetTokenTask) Do() string {
 	key := t.key()
 	v, err, _ := getTokenGroup.Do(key, t.callback)
 	if err != nil {
-		log.Printf("[GetTokenTask] [%s] get token err: %v", key, err)
+		//log.Printf("[GetTokenTask] [%s] get token err: %v", key, err)
 		return ""
 	}
 	token, ok := v.(string)
@@ -31,7 +31,7 @@ func (t *GetTokenTask) Do() string {
 		log.Printf("[GetTokenTask] [%s] convert token to string err", key)
 		return ""
 	}
-	log.Printf("[GetTokenTask] [%s] got token: %s", key, token)
+	//log.Printf("[GetTokenTask] [%s] got token: %s", key, token)
 	return token
 }
 
@@ -40,7 +40,7 @@ func newGetTokenTask(region string, business string) *GetTokenTask {
 		Region:   region,
 		Business: business,
 		callback: func() (interface{}, error) {
-			return getToken(region, business)
+			return GetToken(region, business)
 		},
 	}
 }
