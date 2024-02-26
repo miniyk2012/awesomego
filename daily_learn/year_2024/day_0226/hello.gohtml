@@ -1,0 +1,11 @@
+{{if hasPermission "feature-a"}}
+    <div class="feature">
+        <h3>Feature A</h3>
+        <p>Some other stuff here...</p>
+    </div>
+{{else}}
+    <div class="feature disabled">
+        <h3>Feature A</h3>
+        <p>To enable Feature A please upgrade your plan</p>
+    </div>
+{{end}}
