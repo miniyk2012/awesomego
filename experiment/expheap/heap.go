@@ -1,4 +1,4 @@
-package structure
+package expheap
 
 type IntHeap []int // 定义一个类型
 
