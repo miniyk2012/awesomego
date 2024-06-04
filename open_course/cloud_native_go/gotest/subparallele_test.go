@@ -3,6 +3,9 @@ package gotest_test
 import (
 	"testing"
 	"time"
+
+	"github.com/miniyk2012/awesomego/open_course/cloud_native_go/gotest"
+	"github.com/stretchr/testify/assert"
 )
 
 func parallelSub1(t *testing.T) {
@@ -21,6 +24,7 @@ func parallelSub3(t *testing.T) {
 	t.Parallel()
 	t.Logf("test3")
 	time.Sleep(1 * time.Second)
+	assert.Equal(t, 3, gotest.Add(1, 2))
 }
 
 func TestSubParallel(t *testing.T) {
