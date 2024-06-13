@@ -3,9 +3,11 @@ module github.com/miniyk2012/awesomego
 go 1.20
 
 require (
+	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/demdxx/gocast v1.2.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
+	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/gomodule/redigo v1.8.9 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/marusama/cyclicbarrier v1.1.0 // indirect
