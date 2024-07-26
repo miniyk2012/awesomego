@@ -12,4 +12,5 @@ func TestSub(t *testing.T) {
 	t.Logf("TestSub")
 	assert.Equal(t, -1, Sub(1, 2))
 	app2.Teardown()
+	//data := []byte("{\"message\":\"insertDeleteTceServiceTask error\",\"task_status\":1}")
 }
