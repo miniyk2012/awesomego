@@ -3,12 +3,14 @@ module github.com/miniyk2012/awesomego
 go 1.20
 
 require (
+	code.byted.org/aweme-go/dsync v1.1.0 // indirect
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/demdxx/gocast v1.2.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/gomodule/redigo v1.8.9 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
